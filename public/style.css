@@ -1,0 +1,63 @@
+html {
+  background-image: url("https://img.freepik.com/free-photo/supermarket-banner-concept-with-ingredients_23-2149421181.jpg?w=2000");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+body {
+  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.title {
+  width: 70%;
+  padding: 1em;
+  text-align: center;
+  border: 2px black solid;
+  background-color:#f9b4ab;
+  border-radius: 30px;
+}
+
+
+form label{
+  background-color: white;
+}
+
+@media screen and (max-width: 600px){
+  html{
+   
+    background-size: cover;
+    background-position: center, center;
+    
+  }
+  body {
+    width: auto;
+    height: 100%;
+    
+  }
+
+  form{
+    display: inline-block;
+  }
+#formLogin{
+  
+}
+  form input{
+    width: 100%;
+    height: 3em;
+  }
+.fbutt{
+  height: 5em;
+  border-radius: 20px;
+  background-color: white;
+  border: 3px black solid;
+}
+#formRegister{
+  top: 10em;
+}
+}

@@ -1,0 +1,273 @@
+/**/
+
+
+html {
+  background-image: url("https://img.freepik.com/free-photo/supermarket-banner-concept-with-ingredients_23-2149421181.jpg?w=2000");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+body {
+  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+
+
+.title{
+  width: 70%;
+  background-color:#f9b4ab;
+  padding: 10px;
+  text-align: center;
+  border: 5px black solid;
+  border-bottom-width: 0px;
+  border-radius: 30px
+  
+}
+
+#lisbut {
+  min-height: 20vh;
+    max-height: 50vh;
+  
+  margin:auto;
+  width: 80%;
+  padding: 10px;
+  border: 5px black solid;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  background-color:#fdebd3;
+  border-top-width: 1px;
+  overflow: auto;
+}
+
+
+#ulist {
+  margin: auto;
+  width: 65%;
+}
+
+
+
+#ulist li {
+  margin-bottom: 0.1em;
+  max-width: 20em;
+  word-wrap:break-word;
+}
+
+.buttony {
+  background-color: white;
+  border: 1px solid white;
+  box-shadow: 2px 2px 5px;
+  border-radius: 45%;
+  transition-duration: 200ms;
+  margin-left: 3em;
+  
+}
+
+
+
+.buttony:hover {
+  background-color: grey;
+  box-shadow: 0px 0px 1px;
+  border: 1px black solid;
+}
+
+#delButts {
+  margin-top: 5px;
+}
+
+
+
+#delButts div {
+  float: left;
+  position: relative;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  opacity: 0;
+  margin-bottom: 5px;
+}
+
+#delButts div:has(~ .buttony:hover) {
+  opacity: 1;
+  transition-duration: 200ms;
+  transform: rotate(135deg);
+}
+
+#form {
+  background-color: #679186;
+  border: 5px black solid;
+  border-top-width: 0px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 1.5em;
+  width: 50%;
+}
+
+#form label {
+  padding: 10px;
+  font-size: 2em;
+}
+#form input{
+  height: 2em;
+}
+
+.form-submit {
+  border: 2px black solid;
+  border-radius: 20px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+.buttony, #delButts div{
+  margin-bottom: 0.45em;
+  
+}
+
+#form2{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  color: grey;
+  border: 2px grey dotted;
+  width: 50%;
+  text-align: center;
+  border-radius: 10px;
+  margin: auto 0;
+}
+#refresh{
+  background-color: #bbd4ce;
+  margin: auto;
+  padding: 20px;
+  width: 30%;
+  border-radius: 10px;
+  border: 0px;
+  box-shadow: 5px 2px 2px grey;
+  transition-duration: 800ms;
+}
+
+#refresh:hover {
+  position: relative;
+  left: 1px;
+  box-shadow:none;
+  border-radius: 5px;
+  font-size: 1em;
+}
+#refresh:active{
+  background-color: grey;
+  color: white;
+  font-size: 5px;
+}
+
+@media screen and (min-width: 601px){
+  #ulist{
+    margin: auto;
+    width: 40%;
+  }
+  #ulist li{
+    list-style-type: none;
+    font-size: 2em;
+  }
+  .buttony{
+    float: right;
+    padding: 1em;
+  }
+  
+}
+@media screen and (max-width: 600px){
+  html{
+   
+    background-size: cover;
+    background-position: center, center;
+    
+  }
+  body {
+    width: auto;
+    height: 100%;
+  }
+
+.small-browser body {
+    margin: 0 auto;
+    padding: 0;
+    width: auto;
+    height: 100vh;
+    
+  }
+  
+  .title {
+    width: 80vw
+    
+  }
+  #lisbut {
+    width: 85vw;
+    max-height: 50vh;
+    margin: auto;
+  }
+  #ulist {
+    width: 90%;
+    padding: 1em;
+   }
+  #ulist li{
+    max-width: 15em;
+  word-wrap:break-word;
+  }
+  #form {
+    width: 80vw;
+    padding: 1em;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    
+  }
+  #form label{
+    display:none;
+  }
+  .buttony {
+    float:right;
+    position: relative;
+    padding: 1em;
+    font-weight: bold;
+    top: -1em;
+    left: 3em;
+  }
+  .inline li{
+   padding-bottom: 2.5em;
+    
+  }
+  
+
+  #delButts div{
+  top: 1em;
+  }
+  .form-submit{
+    margin-left: 0;
+    padding: 2em;
+    float:right;
+  }
+ #newitem{
+   float:left;
+   padding: 1em;
+   height: 1em;
+   width: 40%;
+ }
+  #refresh{
+    padding: 1em;
+    margin: auto;
+    width: 100%;
+  }
+  
+}

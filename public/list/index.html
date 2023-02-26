@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Grocer's List</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="description" content="" />
+  <link rel="stylesheet" href="public/list/style.css" />
+  <link rel="icon" href="https://static.vecteezy.com/system/resources/previews/008/848/350/original/fresh-yellow-banana-fruit-free-png.png" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+</head>
+
+<body>
+  
+  <div class="title">
+    <h1>Grocer List App</h1>
+    <h5>App for keeping track of needed groceries.</h5>
+    <form action="/logout" method="post">
+      <input type="submit" class="logout" name = "logout"  value = "LOGOUT"/>
+    </form>
+  </div>
+  
+  <div id="lisbut" class="lisbut">
+    <form id="form2" action="/refresh" method="get">
+      <label>Click here to load previous list!</label>
+    <input type="button" value="REFRESH" id = "refresh" />
+  </form>
+    
+    <ul id="ulist" class="inline"></ul>
+    <div id="delButts"></div>
+  </div>
+
+  <form id="form" action= "/api/groceritem" method="post">
+    <label for="newitem">New Item</label><br />
+    <input type="text" id="newitem" name="newitem" placeholder="New Item" />
+    <input type="submit" value="Submit" class="form-submit" />
+  </form>
+  
+  
+  <script>
+    
+    var xhr = new XMLHttpRequest();
+    var form = document.getElementById("form");
+    window.addEventListener("resize", function(){
+      if(window.matchMedia("(max-width: 600px)").matches){
+      document.body.classList.add("small-browser");
+    }
+    else{
+      document.body.classList.remove("small-browser");
+    }
+    })
+    
+    
+   document.getElementById("refresh").addEventListener("click", (event)=>{
+    event.preventDefault();
+    
+     xhr.open("GET", "/refresh");
+     xhr.onload = () =>{
+        const items = JSON.parse(xhr.responseText);
+       console.log(items)
+       items.map(function(current, i) {
+         let newbutt = document.createElement("button");
+         let newdiv = document.createElement("div"); 
+          const entry = document.createElement("li");
+          const list = document.getElementById("ulist");
+          const buttons = document.getElementById("delButts");
+          entry.textContent = current.newitem;
+          entry.setAttribute("id", current._id);
+          entry.setAttribute("class", "extra");
+          newdiv.setAttribute("id", current._id);
+          newdiv.setAttribute("class", "extra");
+          newbutt.innerHTML = "Delete";
+          newbutt.setAttribute("id", current._id);
+          newbutt.setAttribute("class", "buttony");
+          list.appendChild(entry);
+          buttons.appendChild(newdiv);
+          document.getElementById(current._id).appendChild(newbutt);
+
+          newbutt.onclick = function() {
+                  const butid = document.getElementById(newbutt.id);
+                  xhr.open("GET", "/api/groceritem/" + newbutt.id, true);
+                  xhr.setRequestHeader("Content-Type", "application/json");
+                  xhr.send(JSON.stringify({id: newbutt.id, item: butid}));
+                  butid.remove();
+                  newbutt.remove();
+                  newdiv.remove();
+                };
+         
+       })
+       
+     };
+     xhr.send();
+     document.getElementById("form2").remove();
+   })
+    
+    
+  
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      
+      const newbutt = document.createElement("button");
+      const newdiv = document.createElement("div"); 
+      let entry = document.createElement("li");
+      let list = document.getElementById("ulist");
+      let buttons = document.getElementById("delButts");
+      let subValue = document.getElementById("newitem");
+      let item = document.getElementById("newitem").value
+      let abc = "abcdefghijklmnopqrstuvwxyz";
+      let abc2 = "abcdefghijklmnopqrstuvwxyz";
+      let ranabc = abc[Math.floor(Math.random()*abc.length)];
+      let ranabc2 = abc2[Math.floor(Math.random()*abc2.length)];
+      let ranId = Math.floor(Math.random()*1000);
+      let ranId2 = Math.floor(Math.random()*100);
+      let id = ranabc + ranId + ranabc2 + ranId2;
+      xhr.open("POST", "/api/groceritem/", true);
+      xhr.setRequestHeader("Content-Type", "application/json" );
+      xhr.send(JSON.stringify({_id: id, newitem: item}));
+      
+      entry.textContent = item;
+      entry.setAttribute("id", id);
+      newdiv.setAttribute("id", id);
+      newbutt.innerHTML = "Delete";
+      newbutt.setAttribute("id", id);
+      newbutt.setAttribute("class", "buttony")
+      
+      list.appendChild(entry);
+      buttons.appendChild(newdiv);
+      document.getElementById(id).appendChild(newbutt);
+      subValue.value = ""; 
+      newbutt.onclick = function() {
+        const xhr = new XMLHttpRequest();
+        const butid = document.getElementById(newbutt.id);
+        xhr.open("GET", "/api/groceritem/" + newbutt.id, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify({id: newbutt.id, item: butid}));
+        butid.remove();
+        newbutt.remove();
+        newdiv.remove();
+      };
+     document.getElementById("form2").remove();
+      
+    });
+   //more colors: #f9b4ab   #264e70
+  </script>
+</body>
+
+</html>
+
+
+

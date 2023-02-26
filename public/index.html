@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Grocer's List</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="description" content="" />
+  <link rel="stylesheet" href="public/style.css" />
+  <link rel="icon" href="https://static.vecteezy.com/system/resources/previews/008/848/350/original/fresh-yellow-banana-fruit-free-png.png" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+</head>
+
+<body>
+  <div class="title">
+  <h1>Login or register</h1>
+  </div>
+  <form id="formLogin" method="post" action="/login">
+    <label>LOGIN</label>
+    <input type="text" name="username" placeholder="Username" id="logValue"/>
+    <input type="password" name = "password" placeholder="Password" id="logpassvalue"/>
+    <input type="submit" value="SUBMIT" class="fbutt" />
+  </form>
+  <form id="formRegister" method="post" action="/register">
+    <label>REGISTER</label>
+    <input type="text" placeholder="Username" name="username" id="registerValue"/>
+    <input type="password" placeholder="Password"  name="password" id="passValue"/>
+    <input type="submit" value="SUBMIT" class="fbutt" />
+  </form>
+
+
+  <script>
+
+    
+    
+    /*
+    document.getElementById("formRegister").addEventListener("submit", (event) => {
+      const user = document.getElementById("registerValue").value;
+      const pass = document.getElementById("passValue").value;
+      event.preventDefault();
+    fetch("/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({username:user, password: pass })
+    })
+    .then(response => response.text())
+    .catch(error => console.log(error))
+    });
+      
+
+    
+    document.getElementById("formLogin").addEventListener("submit", (event)=>{
+      const user = document.getElementById("logValue").value;
+      const pass = document.getElementById("logpassvalue").value;
+      event.preventDefault();
+      fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({username:user, password: pass })
+    })
+    .then(response => response.text())
+    .then(data => console.log(data))
+    .catch(error => console.log(error))
+    });
+      */
+  </script>
+</body>
+</html>
